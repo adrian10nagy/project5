@@ -1,0 +1,23 @@
+﻿@using DAL.Entities;
+
+@{
+    List<Product> allProducts = (List<Product>)ViewData["allProductTypes"];
+}
+
+<div id="SearchPreviewInnerDiv">
+
+    @foreach (var item in allProducts)
+    {
+        <div class="MainSearchItem" onclick="addSearchTerm('@item.Name')">
+            @item.Name
+        </div>
+    }
+</div>
+
+<script>
+
+    $("#SearchPreviewInnerDiv").mouseleave(function () {
+        $("#SearchPreviewInnerDiv").fadeOut("slow");
+    });
+
+</script>

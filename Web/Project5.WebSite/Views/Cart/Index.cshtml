@@ -1,0 +1,109 @@
+﻿@model DAL.Entities.Cart
+@using System.Collections.Generic;
+@using DAL.Entities;
+
+@{
+    ViewBag.Title = "Index";
+    List<DAL.Entities.County> counties = (List<DAL.Entities.County>)ViewData["counties"];
+    var totalSum = 0;
+}
+
+<h2>Cosul dvs.</h2>
+
+<div>
+    <hr />
+    <table border="0">
+        <tr>
+            <td>Produs</td>
+            <td>Cantitate</td>
+            <td>Pret Unitar</td>
+            <td>Pret Total</td>
+        </tr>
+        @foreach (var item in @Model.CartOffers)
+        {
+            var subTotal = item.Offer.Price * @item.Quantity;
+            totalSum = totalSum + subTotal;
+            <tr>
+                <td>
+                    @item.Offer.Title
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @item.Offer.Price
+                </td>
+                <td>
+                    @subTotal
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>Total comanda</td>
+            <td>@totalSum</td>
+        </tr>
+    </table>
+</div>
+<div>
+    @using (Html.BeginForm("Confirm", "Cart", FormMethod.Post))
+    {
+        <div id="authType">
+            <h2>Incheie comanda</h2>
+            <input type="radio" name="authType" value="newClient" checked="checked">Sunt Client Nou<br>
+            <input type="radio" name="authType" value="alreadyClient">Sunt deja client
+        </div>
+        <div id="ContactInfoBox">
+            <fieldset>
+                <h1>Datele personale de contact:</h1>
+                <!--Customer-->
+                <div id="customer">
+                    <p>
+                        <label for="firstname">Prenume*</label>
+                        <input type="text" name="firstname" id="firstname" required>
+                        <label for="lastname">Nume de familie*</label>
+                        <input type="text" name="lastname" id="lastname" required>
+                    </p>
+                </div>
+                <p>
+                    <label for="email">Email*</label>
+                    <input type="text" name="email" required>
+                    <label for="phone">Telefon*</label>
+                    <input type="text" name="phone" id="phone" required>
+                </p>
+            </fieldset>
+        </div>
+        <div id="addressesBox">
+            <fieldset>
+                <h1>Doresc sa mi se livreze la adresa:</h1>
+                <p>
+                    <label for="counties">Judet*</label>
+                    <select name="county" id="county">
+                        @foreach (var county in counties)
+                        {
+                            <option value="@county.Id">@county.Name</option>
+                        }
+                    </select>
+                    <label for="city">Oras*</label>
+                    <input type="text" name="city" id="city" required>
+                    <label for="address">Adresa*</label>
+                    <input type="text" name="address" id="address" required>
+                </p>
+            </fieldset>
+
+        </div>
+        <div>
+            <fieldset>
+                <h1>Observatii comanda:</h1>
+                <textarea name="deliverynotes" rows="4" cols="84" onclick="this.value=''">In acest camp puteti adauga observatii</textarea><br>
+
+                <br>
+                <div>
+                    <span></span><span style="background-position: 0px 0px;"></span><input type="checkbox" class="styled" name="terms" id="terms" value="1">
+                </div>
+                <label for="terms">Am citit si sunt de acord cu <a class="linkMe" href="article--termeni-si-conditii--1539.html" target="_blank">termenii si conditiile </a></label>
+                <br class="cleaner">
+                <input type="submit" id="incheiecomanda" value="Trimite comanda" style="margin:10px 0; padding:0 15px;">
+            </fieldset>
+        </div>
+    }
+</div>

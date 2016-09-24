@@ -1,0 +1,37 @@
+﻿@model DAL.Entities.Offer
+
+@{
+    ViewBag.Title = "Details";
+    List<string> images = (List<string>)ViewData["images"];
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Offer</h4>
+    <hr />
+    <div>
+        @Model.Title
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            @foreach (var item in images)
+            {
+                <img class="detailsImages" src="@Url.Action("GetImg", "Resource", new { imgPath = item })" alt="alt text" />
+            }
+        </div>
+        <div class="col-md-4">
+            <div>
+                <input type="hidden" value="@Model.Id" id="offerId"/>
+                @Model.Description
+            </div>
+            <div>
+                @Model.Price
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <button class="btn btn-default AddToCartBtn" onclick="AddToCart(@Model.Id);">Adaugă în coș</button>
+</div>
