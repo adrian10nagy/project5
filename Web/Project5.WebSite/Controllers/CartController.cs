@@ -78,7 +78,8 @@ namespace Project5.WebSite.Controllers
         //action for modal popup
         public ActionResult _AddToCart()
         {
-            var cart = BaseMVC.GetCart();
+            var cart = BaseMVC.GetLastItemInCart();
+            cart.Offer = OffersManager.GetById(cart.OfferId);
 
             return PartialView("_AddToCart", cart);
         }

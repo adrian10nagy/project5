@@ -1,12 +1,20 @@
-﻿@model DAL.Entities.Cart
+﻿@model DAL.Entities.OrderItem
 
 <div>
-    <h3> Produsul a fost adaugat in cos</h3>
+    <div class="row">
+        <div class="col-md-9 col-sm-9">
+            @Model.Offer.Title
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <a href="/cart" class="btn btn-primary btn-sm btn-block" data-dismiss="modal">Vezi detalii cos</a>
+        </div>
+    </div>
 
     <div class="table-cell col-xs-6 col-sm-6 col-md-6">
-        @Html.ActionLink("Vezi detalii cos", "Index", "Cart", null, new { @class = "" })
+        <button type="button" class="btn btn-link btn-sm btn-block" data-dismiss="modal">Continua cumparaturile</button>
     </div>
-    <div class="table-cell col-xs-6 col-sm-6 col-md-6">
-        @Html.ActionLink("Finalizeaza comanda", "Cart", new { @class = "btn btn-primary btn-sm btn-block" })
-    </div>
+    <p>
+        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+    </p>
+
 </div>

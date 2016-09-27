@@ -37,6 +37,12 @@ namespace Project5.WebSite.Helpers
             IncrementLastCartId(cartOffer.SessionId);
         }
 
+        public OrderItem GetLastItemInCart(string sessionId)
+        {
+            var cart = GetCartBySessionId(sessionId);
+            return cart.Last();
+        }
+
         public List<OrderItem> GetCartBySessionId(string sessionId)
         {
             var cartOffers = new List<OrderItem>();
@@ -47,6 +53,7 @@ namespace Project5.WebSite.Helpers
                 var cartOffer = GetCartOfferByIdAndSessionId(sessionId, i);
                 if(cartOffer != null)
                 {
+                    cartOffer.Offer = OffersManager.GetById(cartOffer.OfferId);
                     cartOffers.Add(cartOffer);
                 }
             }

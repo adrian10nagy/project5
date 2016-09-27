@@ -1,4 +1,4 @@
-﻿@model DAL.Entities.Cart
+﻿@model List< DAL.Entities.OrderItem>
 @using System.Collections.Generic;
 @using DAL.Entities;
 
@@ -19,7 +19,7 @@
             <td>Pret Unitar</td>
             <td>Pret Total</td>
         </tr>
-        @foreach (var item in @Model.CartOffers)
+        @foreach (var item in @Model)
         {
             var subTotal = item.Offer.Price * @item.Quantity;
             totalSum = totalSum + subTotal;
@@ -28,7 +28,7 @@
                     @item.Offer.Title
                 </td>
                 <td>
-                    @item.Quantity
+                    <input type="number" name="orderQuantity" value="@item.Quantity" />
                 </td>
                 <td>
                     @item.Offer.Price
@@ -39,7 +39,7 @@
             </tr>
         }
         <tr>
-            <td>Total comanda</td>
+            <td>Total comanda:</td>
             <td>@totalSum</td>
         </tr>
     </table>

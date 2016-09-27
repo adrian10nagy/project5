@@ -1,31 +1,42 @@
 ﻿
-function AddToCart(offerId)
-{
-    //var offerId = $("#offerId").val();
+function AddToCart(offerId) {
+    var addToCartPreview = $("#AddToCartPreview");
 
     AddOfferByIdToCart(offerId);
+
 }
 
-
 function AddOfferByIdToCart(offerId) {
-
-    $.ajax({
-        url: "/Cart/AsyncAddToCart",
-        type: "POST",
-        data: { offerId: (offerId) },
-        success: function (xhr) {
-            $("#AddToCartPreview").dialog({
-                autoOpen: true,
-                position: { my: "center", at: "top+300", of: window },
-                width: 700,
-                context: this,
-                resizable: false,
-                modal: true,
-                open: function () {
-                    $(this).load("/Cart/_AddToCart");
-                }
-            });
+    var addToCartPreview = $("#AddToCartPreview");
+    addToCartPreview.dialog({
+        bgiframe: true,
+        autoOpen: false,
+        height: 900,
+        width: 1100,
+        modal: true,
+        open: function () {
+            $(this).load("/Cart/_AddToCart");
+        },
+        buttons: {
+            'Cuntinua cumparaturile': function () {
+                $(this).dialog("close");
+            },
+            'Vezi cos': function () {
+                $(this).dialog("close");
+            }
         }
-    })
-  
+    });
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "/Cart/AsyncAddToCart",
+            type: "POST",
+            data: { offerId: (offerId) },
+            success: function (xhr) {
+                addToCartPreview.dialog('open');
+            }
+        });
+
+
+    });
 }

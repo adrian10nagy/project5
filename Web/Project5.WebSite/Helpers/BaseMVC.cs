@@ -85,6 +85,14 @@ namespace Project5.WebSite.Helpers
             return cart;
         }
 
+        public static OrderItem GetLastItemInCart()
+        {
+            string sessionId = WebSite.Helpers.Web.Instance.Session.GetSessionId();
+            var cart = WebSite.Helpers.Web.Instance.Cart.GetLastItemInCart(sessionId);
+
+            return cart;
+        }
+
         public static string GetSessionId()
         {
             var sessionId = WebSite.Helpers.Web.Instance.Session.GetSessionId();
