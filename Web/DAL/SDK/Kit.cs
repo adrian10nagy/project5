@@ -7,6 +7,7 @@ namespace DAL.SDK
         Users Users { get; }
         Products Products { get; }
         Offers Offers { get; }
+        Orders Orders { get; }
         Locations Locations { get; }
         Companies Companies { get; }
         Categories Categories { get; }
@@ -26,6 +27,7 @@ namespace DAL.SDK
         public Users Users { get { return new Users(); } }
         public Products Products { get { return new Products(); } }
         public Offers Offers { get { return new Offers(); } }
+        public Orders Orders { get { return new Orders(); } }
         public Categories Categories { get { return new Categories(); } }
         public Companies Companies { get { return new Companies(); } }
         public Locations Locations { get { return new Locations(); } }

@@ -40,7 +40,7 @@ namespace Project5.WebSite.Controllers
                 user = userToAdd;
             }
 
-            Order o = new Order
+            Order order = new Order
             {
                 Address = collection["address"],
                 City = collection["city"],
@@ -54,17 +54,19 @@ namespace Project5.WebSite.Controllers
                     Id = 1
                 }
             };
+            order.OrderItems = BaseMVC.GetCart();
+            OrderManager.Add(order);
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult AsyncAddToCart(int offerId)
+        public ActionResult AsyncAddToCart(int offerId, int quantity = 1)
         {
-            var cartOffer = new CartOffer()
+            var cartOffer = new OrderItem()
             {
-                Offer = OffersManager.GetById(offerId),
-                Quantity = 1
+                OfferId = offerId,
+                Quantity = quantity
             };
 
             BaseMVC.AddToCart(cartOffer);

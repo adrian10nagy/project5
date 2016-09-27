@@ -46,6 +46,7 @@
     <Compile Include="Managers\CategoriesManager.cs" />
     <Compile Include="Managers\LocationManager.cs" />
     <Compile Include="Managers\OffersManager.cs" />
+    <Compile Include="Managers\OrderManager.cs" />
     <Compile Include="Managers\ProductsManager.cs" />
     <Compile Include="Managers\SearchCriteriasManager.cs" />
     <Compile Include="Managers\SearchManager.cs" />

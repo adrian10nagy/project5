@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using System.Collections.Generic;
 
 namespace Project5.WebSite.Helpers
 {
@@ -70,13 +71,13 @@ namespace Project5.WebSite.Helpers
             WebSite.Helpers.Web.Instance.Session.unsetUser();
         }
 
-        public static void AddToCart(CartOffer cartOffer)
+        public static void AddToCart(OrderItem cartOffer)
         {
             cartOffer.SessionId = WebSite.Helpers.Web.Instance.Session.GetSessionId();
             WebSite.Helpers.Web.Instance.Cart.AddToCart(cartOffer);
         }
 
-        public static Cart GetCart()
+        public static List<OrderItem> GetCart()
         {
             string sessionId = WebSite.Helpers.Web.Instance.Session.GetSessionId();
             var cart =  WebSite.Helpers.Web.Instance.Cart.GetCartBySessionId(sessionId);

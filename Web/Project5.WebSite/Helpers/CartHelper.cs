@@ -29,20 +29,17 @@ namespace Project5.WebSite.Helpers
 
         }
 
-        public void AddToCart(CartOffer cartOffer)
+        public void AddToCart(OrderItem cartOffer)
         {
             var lastCartOfferId = LastCartOfferId(cartOffer.SessionId) + 1;
-            System.Web.HttpContext.Current.Session["sessionId" + cartOffer.SessionId + "offerId" + lastCartOfferId.ToString()] = cartOffer.Offer.Id;
+            System.Web.HttpContext.Current.Session["sessionId" + cartOffer.SessionId + "offerId" + lastCartOfferId.ToString()] = cartOffer.OfferId;
             System.Web.HttpContext.Current.Session["sessionId" + cartOffer.SessionId + "offerId" + lastCartOfferId.ToString() + "quantity"] = cartOffer.Quantity;
             IncrementLastCartId(cartOffer.SessionId);
         }
 
-        public Cart GetCartBySessionId(string sessionId)
+        public List<OrderItem> GetCartBySessionId(string sessionId)
         {
-            var cart = new Cart()
-            {
-                CartOffers = new List<CartOffer>()
-            };
+            var cartOffers = new List<OrderItem>();
 
             var lastCartOfferId = LastCartOfferId(sessionId) + 1;
             for (int i = 0; i < lastCartOfferId; i++)
@@ -50,16 +47,16 @@ namespace Project5.WebSite.Helpers
                 var cartOffer = GetCartOfferByIdAndSessionId(sessionId, i);
                 if(cartOffer != null)
                 {
-                    cart.CartOffers.Add(cartOffer);
+                    cartOffers.Add(cartOffer);
                 }
             }
 
-            return cart;
+            return cartOffers;
         }
 
-        private CartOffer GetCartOfferByIdAndSessionId(string sessionId, int i)
+        private OrderItem GetCartOfferByIdAndSessionId(string sessionId, int i)
         {
-            CartOffer cartOffer = null;
+            OrderItem cartOffer = null;
 
             if (System.Web.HttpContext.Current.Session["sessionId" + sessionId + "offerId" + i] != null &&
                 int.Parse(System.Web.HttpContext.Current.Session["sessionId" + sessionId + "offerId" + i].ToString()) != 0)
@@ -67,8 +64,8 @@ namespace Project5.WebSite.Helpers
                 if (System.Web.HttpContext.Current.Session["sessionId" + sessionId + "offerId" + i + "quantity"] != null &&
                     int.Parse(System.Web.HttpContext.Current.Session["sessionId" + sessionId + "offerId" + i + "quantity"].ToString()) != 0)
                 {
-                    cartOffer = new CartOffer();
-                    cartOffer.Offer = OffersManager.GetById(int.Parse(System.Web.HttpContext.Current.Session["sessionId" + sessionId + "offerId" + i].ToString()));
+                    cartOffer = new OrderItem();
+                    cartOffer.OfferId = int.Parse(System.Web.HttpContext.Current.Session["sessionId" + sessionId + "offerId" + i].ToString());
                     cartOffer.Quantity = int.Parse(System.Web.HttpContext.Current.Session["sessionId" + sessionId + "offerId" + i + "quantity"].ToString());
                 }
             }
