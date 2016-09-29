@@ -10,9 +10,10 @@ function AddOfferByIdToCart(offerId) {
     var addToCartPreview = $("#AddToCartPreview");
     addToCartPreview.dialog({
         bgiframe: true,
+        position: { my: "center", at: "top+300", of: window },
         autoOpen: false,
-        height: 900,
-        width: 1100,
+        height: 400,
+        width: 800,
         modal: true,
         open: function () {
             $(this).load("/Cart/_AddToCart");
