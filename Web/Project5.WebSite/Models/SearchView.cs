@@ -12,6 +12,8 @@ namespace Project5.WebSite.Models
 
         public List<Offer> Offers { get; set; }
 
+        public List<Offer> OfferSuggestions { get; set; }
+
         public string SearchedKey { get; set; }
 
         public List<OfferType> OfferTypes { get; set; }

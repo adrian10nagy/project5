@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
+﻿
 namespace Project5.WebSite.Controllers
 {
+    using Business.Managers;
+    using System.Web.Mvc;
+
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            var categories = CategoriesManager.GetAll();
+            ViewData["categories"] = categories;
+
             return View();
         }
 

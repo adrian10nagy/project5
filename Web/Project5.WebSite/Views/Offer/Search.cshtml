@@ -21,8 +21,8 @@
                         <h4>@searchCriteria.NameToDisplay</h4>
                         <div class="row1 scroll-pane">
                             <div class="col col-4">
-                                @if(searchCriteria.CriteriaType == CriteriaType.Checkbox)
-                                { 
+                                @if (searchCriteria.CriteriaType == CriteriaType.Checkbox)
+                                {
                                     foreach (var scValues in searchCriteria.SearchCriteriaValues)
                                     {
                                         var isChecked = @scValues.DisplayOrder == 0 ? "checked" : string.Empty;
@@ -34,7 +34,7 @@
                                     foreach (var scValues in searchCriteria.SearchCriteriaValues)
                                     {
                                         var isChecked = @scValues.DisplayOrder == 0 ? "checked" : string.Empty;
-                                        <label class="radio"><input type="radio" name="radiobox" isChecked><i></i>@scValues.Value</label>
+                                        <label class="radio"><input type="radio" name="radiobox" ischecked><i></i>@scValues.Value</label>
                                     }
                                 }
                             </div>
@@ -66,34 +66,29 @@
             <!-- grids_of_4 -->
             @foreach (var item in offers)
             {
-
-                <div class="grid1_of_4">
-                    <a href="Details/@item.Id">
-                        <div class="content_box">
-
-                            <div class="view view-fifth">
-                                @{
                 var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Images/" + @item.Id + ".png");
-                                }
-                                @if (File.Exists(@path))
-                                {
-                                    <img src=@path class="img-responsive" alt="" />
-                                }
-                                else
-                                {
-                                    <img src="~/Images/noimage.png" class="img-responsive" alt="" />
-                                }
-                                <div class="mask">
-                                    <div class="info">@item.Title</div>
-                                </div>
+
+                <div class="grid1_of_4 shop_item_box">
+                    <a href="Details/@item.Id" class='default-link'>
+                        <div class="view view-fifth">
+                            @if (File.Exists(@path))
+                            {
+                                <img src=@path class="img-responsive" alt="" />
+                            }
+                            else
+                            {
+                                <img src="~/Images/noimage.png" class="img-responsive" alt="" />
+                            }
+                            <div class="mask">
+                                <div class="info">@item.Title</div>
                             </div>
-                            <h4>@Html.ActionLink("Offer", "Details", new { id = @item.Id }) @item.Title</h4>
-                            <p>@item.Description</p>
-                            <h4>Preț: @item.Price</h4>
+                            <span class="searchOfferDetailsPrice">Preț: @item.Price RON</span>
                         </div>
+                        <h4>@Html.ActionLink(@item.Title, "Details", new { id = @item.Id })</h4>
+                        <p>@item.Description</p>
                     </a>
                     <div>
-                        <button class="btn btn-default AddToCartBtn" onclick="AddToCart(@item.Id);">Adaugă în coș</button>
+                        @*<button class="btn btn-default AddToCartBtn" onclick="AddToCart(@item.Id);">Adaugă în coș</button>*@
                     </div>
                 </div>
             }

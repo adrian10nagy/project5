@@ -12,7 +12,7 @@ namespace DAL.Entities
         public int Price { get; set; }
         public OfferType OfferType { get; set; }
         public Product Product { get; set; }
-        public Company Conpany { get; set; }
+        public Company Company { get; set; }
         public OfferFlags Flags { get; set; }
     }
 

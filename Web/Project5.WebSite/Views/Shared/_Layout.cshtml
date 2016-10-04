@@ -8,29 +8,55 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <!-- header_top -->
-    <div class="top_bg">
+    <!-- Navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="header_top">
-                @*<div class="top_left">
-                          <h2><a href="#">50%off</a> use coupon code "big61" and get extra 33% off on orders above rs 2,229 </h2>
-                    </div>*@
-                <div class="top_left">
-                    <div class="logo">
-                        <a href="index.html"> Antreprenor </a>
+            <div class="top_left">
+                <div class="logo">
+                    @Html.ActionLink(" + Piata MB", "Index", "Home")
+                </div>
+            </div>
+            <div class="top_right">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="login">
+                        @Html.Partial("~/Views/Shared/_Account.cshtml")
+                    </li>
+                    <li>|</li>
+                    <li> @Html.ActionLink(" + ADAUGA ANUNT NOU", "Add", "Offer") </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="home-banner">
+        <div class="col-xs-12 col-md-8 advanced-search">
+            @using (Html.BeginForm("Search", "Offer", FormMethod.Get, new { enctype = "multipart/form-data" }))
+            {
+                <div class="mainSearchDiv">
+                    <input type="text" name="mainSearchTxt" class="form-control" id="mainSearchTxt" placeholder="search..." autofocus>
+                    @*div for Main Search preview*@
+                    <div id="MainSearchPreview"></div>
+                    <button type="submit" id="mainSearchBtn">
+                        <span class="glyphicon glyphicon-search"></span> Cauta
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <select class="form-control" id="dropdownSearchCategories" name="dropdownSearchCategories">
+                            <option value="0">Toate Categoriile</option>
+                            <option value="1">Categoria 1</option>
+                            <option value="2">Categoria 2</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <select class="form-control" id="dropdownSearchCountries" name="dropdownSearchCountries">
+                            <option value="0">Toata Romania</option>
+                            <option value="1">Judet 1</option>
+                            <option value="2">Judet 2</option>
+                        </select>
                     </div>
                 </div>
-                <div class="top_right">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="login">
-                            @Html.Partial("~/Views/Shared/_Account.cshtml")
-                        </li>
-                        <li>|</li>
-                        <li> @Html.ActionLink(" + ADAUGA ANUNT NOU", "Add", "Offer") </li>
-                    </ul>
-                </div>
-                <div class="clearfix"> </div>
-            </div>
+            }
         </div>
     </div>
     <!-- header -->
@@ -61,23 +87,7 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="search">
-                        @using (Html.BeginForm("Search", "Offer", FormMethod.Get, new { enctype = "multipart/form-data" }))
-                        {
-                            <input type="text" name="mainSearch" id="mainSearch" placeholder="search..." autofocus>
-                            <input type="text" name="mainSearchCounties" id="mainSearchCounties" placeholder="Toata Romania">
-                            <input type="submit" value="Cauta acum">
-                        }
-                        @*div for Main Search preview*@
-                        <div id="MainSearchPreview"></div>
 
-                        @*div for Main Search Counties preview*@
-                        <div id="MainSearchCountiesPreview"></div>
-
-                        @*div for Add To Cart preview*@
-                        <div id="AddToCartPreview" title="Produsul a fost adaugat in cos"></div>
-
-                    </div>
                     <div class="clearfix"> </div>
                 </div>
                 <!-- start header menu -->
@@ -237,6 +247,11 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
+    <!-- Div for modal views -->
+
+    @*div for Add To Cart preview*@
+    <div id="AddToCartPreview" title="Produsul a fost adaugat in cos"></div>
+
     @Scripts.Render("~/bundles/jquery")
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     @Scripts.Render("~/bundles/bootstrap")

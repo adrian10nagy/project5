@@ -1,27 +1,27 @@
 ﻿function addSearchTerm(searchTerm) {
-    document.getElementById("mainSearch").value = searchTerm;
+    document.getElementById("mainSearchTxt").value = searchTerm;
     $("#SearchPreviewInnerDiv").fadeOut("slow");
 }
 
-function addSearchCountiesTerm(searchTerm) {
-    document.getElementById("mainSearchCounties").value = searchTerm;
-    $("#SearchCountiesPreviewInnerDiv").fadeOut("slow");
-}
+//function addSearchCountiesTerm(searchTerm) {
+//    document.getElementById("mainSearchCounties").value = searchTerm;
+//    $("#SearchCountiesPreviewInnerDiv").fadeOut("slow");
+//}
 
 
 
 $(document).ready(function () {
 
 
-    $('#mainSearch').keyup(function (e) {
-        var mainSearchElem = $('#mainSearch');
+    $('#mainSearchTxt').keyup(function (e) {
+        var mainSearchElem = $('#mainSearchTxt');
         mainSearch(mainSearchElem);
     });
 
-    $('#mainSearchCounties').keyup(function (e) {
-        var mainSearchCountiesElem = $('#mainSearchCounties');
-        mainSearchCounties(mainSearchCountiesElem);
-    });
+    //$('#mainSearchCounties').keyup(function (e) {
+    //    var mainSearchCountiesElem = $('#mainSearchCounties');
+    //    mainSearchCounties(mainSearchCountiesElem);
+    //});
 
 
 });
@@ -41,15 +41,15 @@ function mainSearch(mainSearchElem) {
 }
 
 
-function mainSearchCounties(mainSearchCountiesElem) {
-    var mainSearchCountiesPreview = $('#MainSearchCountiesPreview');
+//function mainSearchCounties(mainSearchCountiesElem) {
+//    var mainSearchCountiesPreview = $('#MainSearchCountiesPreview');
 
-    $.ajax({
-        url: "/Resource/AsyncFindCountiesSearch",
-        type: "POST",
-        data: { textSearch: (mainSearchCountiesElem.val()) }
-    })
-         .done(function (partialViewResult) {
-             mainSearchCountiesPreview.html(partialViewResult);
-         });
-}
+//    $.ajax({
+//        url: "/Resource/AsyncFindCountiesSearch",
+//        type: "POST",
+//        data: { textSearch: (mainSearchCountiesElem.val()) }
+//    })
+//         .done(function (partialViewResult) {
+//             mainSearchCountiesPreview.html(partialViewResult);
+//         });
+//}

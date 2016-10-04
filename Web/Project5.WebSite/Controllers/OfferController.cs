@@ -14,15 +14,21 @@ namespace Project5.WebSite.Controllers
         }
 
         [HttpGet]
-        public ActionResult Search(string mainSearch, string mainSearchCounties)
+        public ActionResult Search(string mainSearchTxt, string dropdownSearchCountries, string dropdownSearchCategories)
         {
+            var country = 0;
+            int.TryParse(dropdownSearchCountries, out country);
+            var category = 0;
+            int.TryParse(dropdownSearchCategories, out category);
+            mainSearchTxt = mainSearchTxt ?? string.Empty;
             var searchView = new SearchView()
             {
+                Offers = SearchManager.FindBySearchWord(mainSearchTxt.ToLower(), category, country),
+                OfferSuggestions = SearchManager.GetSuggestions(mainSearchTxt.ToLower(), category, country),
                 SearchCriterias = SearchCriteriasManager.GetAll(),
                 ProductTypes = ProductsManager.GetProductTypesAll(),
-                SearchedKey = mainSearch,
+                SearchedKey = mainSearchTxt,
                 OfferTypes = OffersManager.GetOfferTypesAll(),
-                Offers = SearchManager.FindBySearchWord(mainSearch.ToLower()),
             };
             
             return View(searchView);

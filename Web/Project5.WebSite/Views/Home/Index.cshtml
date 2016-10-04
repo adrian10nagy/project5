@@ -1,31 +1,14 @@
-﻿        <!-- content -->
+﻿@using DAL.Entities;
+@{
+    var categories = (List<Category>)ViewData["categories"];
+}
+
+<!-- content -->
 <div class="container">
     <div class="main">
         <div class="row content_top">
             <div class="col-md-9 content_left">
-                <!-- start slider -->
-                <div id="fwslider">
-                    <div class="slider_container">
-                        <div class="slide">
-                            <!-- Slide image -->
-                            <img src="/images/slider1.jpg" class="img-responsive" alt="" />
-                            <!-- /Slide image -->
-                        </div>
-                        <!-- /Duplicate to create more slides -->
-                        <div class="slide">
-                            <img src="/images/slider2.jpg" class="img-responsive" alt="" />
-                        </div>
-                        <div class="slide">
-                            <img src="/images/slider3.jpg" class="img-responsive" alt="" />
-                        </div>
-                        <!--/slide -->
-                    </div>
-                    <div class="timers"></div>
-                    <div class="slidePrev"><span></span></div>
-                    <div class="slideNext"><span></span></div>
-                </div>
-
-                <!-- end  slider -->
+ 
             </div>
             <div class="col-md-3 sidebar">
                 <div class="grid_list">
@@ -68,6 +51,18 @@
             <div class="clearfix"></div>
         </div>
         <!-- start content -->
+        <div class="row">
+            @foreach (var category in categories)
+            {
+                <a href="~/Search/Category/@category.Id">
+                    <div class="col-xs-12 col-sm-6 col-md-3 mainCategory">
+                        <div class="mainCategoriesTxt">@category.Name</div>
+                        <img src="~/Content/Images/Main/home-banner.jpg" class="mainCategoriesImage" />
+                    </div>
+                </a>
+            }
+        </div>
+
         <div class="content">
             <div class="content_text">
                 <h3>Go Rangers!</h3>

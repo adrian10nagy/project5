@@ -16,6 +16,29 @@
     </div>
     <div class="row">
         <div class="col-md-8">
+            <!-- start slider -->
+            <div id="fwslider">
+                <div class="slider_container">
+                    <div class="slide">
+                        <!-- Slide image -->
+                        <img src="/images/slider1.jpg" class="img-responsive" alt="" />
+                        <!-- /Slide image -->
+                    </div>
+                    <!-- /Duplicate to create more slides -->
+                    <div class="slide">
+                        <img src="/images/slider2.jpg" class="img-responsive" alt="" />
+                    </div>
+                    <div class="slide">
+                        <img src="/images/slider3.jpg" class="img-responsive" alt="" />
+                    </div>
+                    <!--/slide -->
+                </div>
+                <div class="timers"></div>
+                <div class="slidePrev"><span></span></div>
+                <div class="slideNext"><span></span></div>
+            </div>
+
+            <!-- end  slider -->
             @foreach (var item in images)
             {
                 <img class="detailsImages" src="@Url.Action("GetImg", "Resource", new { imgPath = item })" alt="alt text" />
@@ -23,10 +46,10 @@
         </div>
         <div class="col-md-4">
             <div>
-                <input type="hidden" value="@Model.Id" id="offerId"/>
+                @*<input type="hidden" value="@Model.Id" id="offerId"/>*@
                 @Model.Description
             </div>
-            <div>
+            <div id="offerDetailsPrice">
                 @Model.Price
             </div>
         </div>

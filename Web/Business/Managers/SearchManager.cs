@@ -10,7 +10,7 @@ namespace Business.Managers
 {
     public static class SearchManager
     {
-        public static List<Offer> FindBySearchWord(string searchTerm)
+        public static List<Offer> FindBySearchWord(string searchTerm, int category, int county)
         {
             List<Offer> offers = new List<Offer>();
             
@@ -21,7 +21,7 @@ namespace Business.Managers
                 offers.AddRange(OffersManager.GetByProductType(productsByType[0].ProductType.Id));
             }
 
-            // add offers if keyword is Product Type (ex: Legume, Fructe)
+            // add offers if keyword is Product Type[Category] (ex: Legume, Fructe)
             var productsByName = ProductsManager.GetProductsByProductTypesLikeInput(searchTerm);
             if(productsByName.Count > 0)
             {
@@ -35,6 +35,15 @@ namespace Business.Managers
             }
 
             offers = offers.GroupBy(x => x.Id).Select(x => x.First()).ToList();
+
+            return offers;
+        }
+
+        public static List<Offer> GetSuggestions(string searchTerm, int category, int county)
+        {
+            List<Offer> offers = new List<Offer>();
+
+            offers.AddRange(OffersManager.GetBySearchInputOnTitle(searchTerm));
 
             return offers;
         }

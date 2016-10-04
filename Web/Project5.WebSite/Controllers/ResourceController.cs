@@ -19,14 +19,14 @@ namespace Project5.WebSite.Controllers
             return PartialView("_MainSearch");
         }
 
-        [HttpPost]
-        public ActionResult AsyncFindCountiesSearch(string textSearch)
-        {
-            var allCounties = LocationManager.GetCountiesLikeInput(textSearch);
-            ViewData["allCounties"] = allCounties;
+        //[HttpPost]
+        //public ActionResult AsyncFindCountiesSearch(string textSearch)
+        //{
+        //    var allCounties = LocationManager.GetCountiesLikeInput(textSearch);
+        //    ViewData["allCounties"] = allCounties;
 
-            return PartialView("_CountiesSearch");
-        }
+        //    return PartialView("_CountiesSearch");
+        //}
 
         public ActionResult GetImg(string imgPath)
         {

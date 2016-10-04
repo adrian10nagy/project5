@@ -1,5 +1,19 @@
 ﻿
-@if (!Project5.WebSite.Helpers.BaseMVC.IsLoggedIn())
+@if (Project5.WebSite.Helpers.BaseMVC.IsLoggedIn())
+{
+    <div class="dropdown">
+        <p class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            Welcome, @Project5.WebSite.Helpers.BaseMVC.User.FirstName!
+            <span class="caret"></span>
+        </p>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">@Html.ActionLink("My profile", "Profile", "User", null, null)</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">@Html.ActionLink("Delogheaza-te", "Logout", "User", new { @class = "loginNavbar" }, null)</a></li>
+        </ul>
+    </div>
+}
+else
 {
     <div id="loginContainer">
         <a href="#" id="loginButton">Contul meu</a>
@@ -21,19 +35,5 @@
                 <span><a href="#">Am uitat parola</a></span>
             }
         </div>
-    </div>
-}
-else
-{
-    <div class="dropdown">
-        <p class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
-            Welcome, @Project5.WebSite.Helpers.BaseMVC.User.FirstName!
-            <span class="caret"></span>
-        </p>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">@Html.ActionLink("My profile", "Profile", "User", null, null)</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">@Html.ActionLink("Delogheaza-te", "Logout", "User", new { @class = "loginNavbar" }, null)</a></li>
-        </ul>
     </div>
 }
