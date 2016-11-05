@@ -1,18 +1,16 @@
-﻿using DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL.Repositories
+﻿namespace DAL.Repositories
 {
+    using DAL.Cache;
+    using DAL.Entities;
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+
     public interface IProductRepository
     {
         Product GetProductById(int id);
         List<Product> GetProductsAll();
         List<ProductType> GetProductTypesAll();
+        List<ProductType> GetProductTypesByCategoryId(int id);
     }
 
     public partial class Repository : IProductRepository
@@ -44,9 +42,13 @@ namespace DAL.Repositories
 
         public List<Product> GetProductsAll()
         {
-            var products = new List<Product>();
+            var products = MyCache.Instance.GetMyCachedItem(CacheConstants.CacheProductsAll) as List<Product>;
 
-            _dbRead.Execute(
+            if (products == null)
+            {
+                products = new List<Product>();
+
+                _dbRead.Execute(
                 "ProductsGetAll",
             null,
                 r => products.Add(new Product()
@@ -60,6 +62,9 @@ namespace DAL.Repositories
                     }
                 }));
 
+                MyCache.Instance.AddToMyCache(CacheConstants.CacheProductsAll, products, MyCachePriority.Default);
+            }
+
             return products;
         }
 
@@ -69,22 +74,53 @@ namespace DAL.Repositories
 
         public List<ProductType> GetProductTypesAll()
         {
-            var productTypes = new List<ProductType>();
+            var productTypes = MyCache.Instance.GetMyCachedItem(CacheConstants.CacheProductTypesAll) as List<ProductType>;
 
-            _dbRead.Execute(
-                "ProductTypesGetAll",
-            null,
-                r => productTypes.Add(new ProductType
-                {
-                    Id = Read<int>(r, "Id"),
-                    Name = Read<string>(r, "TypeName"),
-                    CategoryId = Read<int>(r, "Id_ctg")
-                }));
+            if (productTypes == null)
+            {
+                productTypes = new List<ProductType>();
+
+                _dbRead.Execute(
+                    "ProductTypesGetAll",
+                null,
+                    r => productTypes.Add(new ProductType
+                    {
+                        Id = Read<int>(r, "Id"),
+                        Name = Read<string>(r, "TypeName"),
+                        CategoryId = Read<int>(r, "Id_ctg")
+                    }));
+
+                MyCache.Instance.AddToMyCache(CacheConstants.CacheProductTypesAll, productTypes, MyCachePriority.Default, new System.TimeSpan(0, 5, 0));
+            }
 
             return productTypes;
         }
 
+        public List<ProductType> GetProductTypesByCategoryId(int id)
+        {
+            var productTypes = MyCache.Instance.GetMyCachedItem(string.Format(CacheConstants.CacheProductTypesByCategoryId, id)) as List<ProductType>;
 
+            if (productTypes == null)
+            {
+                productTypes = new List<ProductType>();
+
+                _dbRead.Execute(
+                "ProductTypesGetByCategoryId",
+                new[]
+                {
+                    new SqlParameter("@Id_ctg",id)
+                },
+                r => productTypes.Add(new ProductType
+                {
+                    Id = Read<int>(r, "Id"),
+                    Name = Read<string>(r, "TypeName"),
+                }));
+
+                MyCache.Instance.AddToMyCache(CacheConstants.CacheProductTypesAll, productTypes, MyCachePriority.Default, new System.TimeSpan(0, 5, 0));
+            }
+
+            return productTypes;
+        }
 
         #endregion
 

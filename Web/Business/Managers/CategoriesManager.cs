@@ -12,7 +12,19 @@ namespace Business.Managers
     {
         public static List<Category> GetAll()
         {
-            return Kit.Instance.Categories.GetOffersAll();
+            return Kit.Instance.Categories.GetCategoryAll();
+        }
+
+        public static List<Category> GetAllWithProductType()
+        {
+            var categories =  Kit.Instance.Categories.GetCategoryAll();
+
+            foreach (var item in categories)
+            {
+                item.ProductTypes = Kit.Instance.Products.GetProductTypesByCategoryId(item.Id);
+            }
+
+            return categories;
         }
     }
 }

@@ -1,12 +1,10 @@
-﻿using DAL.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DAL.Cache;
 
 namespace DAL.Repositories
 {
+    using DAL.Entities;
+    using System.Collections.Generic;
+
     public interface ICategoryRepository
     {
         List<Category> GetCategoryAll();
@@ -16,18 +14,25 @@ namespace DAL.Repositories
     {
         public List<Category> GetCategoryAll()
         {
-            var productTypes = new List<Category>();
+            var categories = MyCache.Instance.GetMyCachedItem(CacheConstants.CacheCategoriesAll) as List<Category>;
 
-            _dbRead.Execute(
+            if (categories == null)
+            {
+                categories = new List<Category>();
+
+                _dbRead.Execute(
                 "CategoryGetAll",
             null,
-                r => productTypes.Add(new Category
+                r => categories.Add(new Category
                 {
                     Id = Read<int>(r, "Id"),
                     Name = Read<string>(r, "Name"),
                 }));
 
-            return productTypes;
+                MyCache.Instance.AddToMyCache(CacheConstants.CacheCategoriesAll, categories, MyCachePriority.Default, new System.TimeSpan(0, 5, 0));
+            }
+
+            return categories;
         }
     }
 }

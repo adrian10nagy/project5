@@ -479,51 +479,11 @@ ul.icon1 {
             text-decoration: underline;
         }
 /* start main */
-.content_top {
-    margin-top: 2em;
-}
-
-.grid_list {
-    border-bottom: 1px solid rgb(236, 236, 236);
-    padding-bottom: 2em;
-    cursor: pointer;
-    margin-bottom: 2em;
-}
-
-    .grid_list:hover a {
-        text-decoration: none;
-    }
-
-.grid_img {
-    width: 30%;
-    float: left;
-    margin-right: 1em;
-}
-
-.grid_text-middle {
-    width: 62.333%;
-    float: left;
-    margin-right: 1em;
-}
 
 .last {
     margin-right: 0;
 }
 
-.grid_text h3, .grid_text-middle h3 {
-    font-size: 18px;
-}
-
-    .grid_text h3 a, .grid_text-middle h3 a {
-        color: #555;
-        text-transform: uppercase;
-    }
-
-.grid_text p, .grid_text-middle p {
-    color: #777777;
-    font-size: 0.8125em;
-    text-transform: uppercase;
-}
 /* start content */
 .content {
     text-align: center;
@@ -567,42 +527,6 @@ ul.icon1 {
         margin: 0 auto;
     }
 
-.grids {
-    padding: 3em 0;
-}
-
-.grid1:hover .look {
-    background: #ffcc33;
-}
-
-.grid1 {
-    position: relative;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.look {
-    position: absolute;
-    right: 15px;
-    bottom: 0;
-    background: rgba(141, 141, 141, 0.51);
-    padding: 10px;
-}
-
-    .look h4 {
-        font-size: 1.2em;
-        color: #fff;
-        text-transform: uppercase;
-    }
-
-    .look p {
-        -webkit-text-stroke: 0.5px;
-        font-size: 0.8125em;
-        color: #fff;
-        text-transform: uppercase;
-    }
 /*-- start footer -- */
 /* scroll_top_btn */
 .footer_top {
@@ -1201,37 +1125,6 @@ ul.icon1 {
     text-align: left;
     border-bottom: 1px solid #ebebeb;
 }
-
-.grid1_of_4 {
-    float: left;
-    width: 200px;
-    height: 260px;
-    background-color: #f7f7f7;
-    margin: 10px;
-    padding: 3px;
-    border-radius: 3px;
-}
-
-    .grid1_of_4 h4 {
-        font-size: 16px;
-        margin-top: 5px;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-        .grid1_of_4 h4 a {
-            text-transform: uppercase;
-            color: #000000;
-        }
-
-    .grid1_of_4 p {
-        font-size: 0.8125em;
-        color: #777777;
-        line-height: 1.5em;
-        margin-bottom: 10px;
-        white-space: nowrap;
-        overflow: hidden;
-    }
 
 .content_box-grid {
     margin-top: 1em;
@@ -2109,19 +2002,7 @@ ul.s_icons {
         }
 /*--media queries--*/
 @media (max-width:1024px) {
-    .grid_list {
-        padding-bottom: 1.5em;
-        margin-bottom: 1.5em;
-    }
-
-    .grid_text h3, .grid_text-middle h3 {
-        font-size: 15px;
-    }
-
-    .grid_text p, .grid_text-middle p {
-        font-size: 12px;
-    }
-
+   
     .content_text h4 a {
         font-size: 1.2em;
     }
@@ -2166,18 +2047,6 @@ ul.s_icons {
         width: 80%;
     }
 
-    .grid1 {
-        margin-bottom: 2em;
-    }
-
-        .grid1 img {
-            display: inline;
-        }
-
-    .look {
-        right: 240px;
-    }
-
     .container {
         width: 745px;
     }
@@ -2213,10 +2082,6 @@ ul.s_icons {
 @media (max-width:768px) {
     .container {
         width: 730px;
-    }
-
-    .look {
-        right: 230px;
     }
 
     .span1_of_2 {
@@ -2373,10 +2238,6 @@ ul.s_icons {
         font-size: 11px;
     }
 
-    .look {
-        right: 15px;
-    }
-
     #loginForm {
         width: 270px;
         background: #fff;
@@ -2521,7 +2382,9 @@ ul.s_icons {
 
 .mainCategory {
     padding: 15px;
+    padding-bottom: 0px;
     overflow: hidden;
+    opacity: 0.9;
 }
 
 .mainCategoriesTxt {
@@ -2537,7 +2400,7 @@ ul.s_icons {
 }
 
 .mainCategoriesImage {
-    max-height: 400px;
+    max-height: 200px;
     max-width: 400px;
 }
 
@@ -2584,4 +2447,33 @@ ul.s_icons {
     width: 210px;
     height: 158px;
     position: relative;
+}
+
+
+/* style form categories */
+.mainCategoriesProductTypes {
+    background-color: rgb(52, 73, 94);;
+    padding-top: 3px;
+    position: absolute;
+    margin: auto;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    opacity: 0.005;
+}
+
+.mainCategoriesProductTypes:hover {
+    opacity: 0.8;
+}
+
+.mainCategoriesProductTypes ul li
+{
+    padding-top: 1px;
+    list-style: none;
+    text-align: left;
+    vertical-align: auto;
 }

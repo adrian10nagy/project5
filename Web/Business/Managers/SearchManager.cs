@@ -47,5 +47,14 @@ namespace Business.Managers
 
             return offers;
         }
+
+        public static List<Offer> GetSuggestionsByCategoryId(int categoryId)
+        {
+            List<Offer> offers = new List<Offer>();
+
+            offers.AddRange(OffersManager.GetByProductType(categoryId));//.(searchTerm));
+
+            return offers;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Project5.WebSite.Controllers
     {
         public ActionResult Index()
         {
-            var categories = CategoriesManager.GetAll();
+            var categories = CategoriesManager.GetAllWithProductType();
             ViewData["categories"] = categories;
 
             return View();

@@ -17,7 +17,7 @@ namespace DAL.SDK
             _repository = new Repository();
         }
 
-        public List<Category> GetOffersAll()
+        public List<Category> GetCategoryAll()
         {
             return _repository.GetCategoryAll();
         }

@@ -1,7 +1,6 @@
 ﻿
 namespace Business.Managers
 {
-    using Business.Cache;
     using DAL.Entities;
     using DAL.SDK;
     using System.Collections.Generic;
@@ -36,15 +35,17 @@ namespace Business.Managers
 
         public static List<ProductType> GetProductTypesAll()
         {
-            var productTypes = MyCache.Instance.GetMyCachedItem(CacheConstants.CacheProductTypesAll) as List<ProductType>;
+            var productTypes = Kit.Instance.Products.GetProductTypesAll();
+            productTypes.OrderBy(o => o.Name);
 
-            if (productTypes == null)
-            {
-                productTypes = Kit.Instance.Products.GetProductTypesAll();
-                productTypes.OrderBy(o => o.Name);
 
-                MyCache.Instance.AddToMyCache(CacheConstants.CacheProductTypesAll, productTypes, MyCachePriority.Default);
-            }
+            return productTypes;
+        }
+
+        public static List<ProductType> GetProductTypesByCategoryId(int id)
+        {
+            var productTypes = Kit.Instance.Products.GetProductTypesByCategoryId(id);
+            productTypes.OrderBy(o => o.Name);
 
             return productTypes;
         }

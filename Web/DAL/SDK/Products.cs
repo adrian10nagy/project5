@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.SDK
 {
-   public class Products
+    public class Products
     {
         private static IProductRepository _repository;
 
@@ -23,7 +23,7 @@ namespace DAL.SDK
         {
             return _repository.GetProductById(id);
         }
-       
+
         public List<Product> GetProductsAll()
         {
             return _repository.GetProductsAll();
@@ -32,6 +32,11 @@ namespace DAL.SDK
         public List<ProductType> GetProductTypesAll()
         {
             return _repository.GetProductTypesAll();
+        }
+
+        public List<ProductType> GetProductTypesByCategoryId(int id)
+        {
+            return _repository.GetProductTypesByCategoryId(id);
         }
 
         #endregion
