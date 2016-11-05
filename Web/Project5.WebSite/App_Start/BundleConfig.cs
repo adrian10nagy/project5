@@ -26,7 +26,7 @@ namespace Project5.WebSite
             bundles.Add(new ScriptBundle("~/bundles/menu").Include(
                       "~/Scripts/jquery-1.11.1.min.js",
                       "~/Scripts/jquery-ui-1.12.1.min.js",
-                      "~/Scripts/megamenu.js",
+                      //"~/Scripts/megamenu.js",
                       "~/Scripts/main.js",
                       "~/Scripts/general.js",
                       "~/Scripts/fwslider.js",
@@ -35,7 +35,7 @@ namespace Project5.WebSite
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/style.css",
-                      "~/Content/megamenu.css",
+                      //"~/Content/megamenu.css",
                       "~/Content/fwslider.css",
                       "~/Content/jquery-ui-1.12.1.css",
                       "~/Content/site.css"));

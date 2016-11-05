@@ -1,9 +1,10 @@
-﻿
-namespace Business.Cache
+﻿namespace DAL.Cache
 {
     public class CacheConstants
     {
         public const string CacheSearchCriteriaAll = "CacheSearchCriteriaAll";
+
+        public const string CacheProductsAll = "CacheProductsAll";
 
         public const string CacheProductTypesAll = "CacheProductTypesAll";
 
@@ -12,5 +13,7 @@ namespace Business.Cache
         public const string CacheOfferTypesAll = "CacheOfferTypesAll";
 
         public const string CacheOffersAll = "CacheOffersAll";
+
+        public const string CacheCategoriesAll = "CacheCategoriesAll";
     }
 }

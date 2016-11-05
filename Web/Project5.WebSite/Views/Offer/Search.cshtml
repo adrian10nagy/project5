@@ -48,7 +48,7 @@
         <div class="col-md-9 w_content">
             <div>
                 <div>
-                    <span>@offers.Count() oferte</span> @if (@Model.SearchedKey != null)
+                    <span>@offers.Count() oferte</span> @if (@Model.SearchedKey != null && @Model.SearchedKey != "")
                     {  <span>pentru: "</span><b>@Model.SearchedKey</b> <span>"</span>}
                 </div>
                 <span>Ordonează după   </span>
