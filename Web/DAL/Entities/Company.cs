@@ -10,6 +10,7 @@ namespace DAL.Entities
         public DateTime JoinDate { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string County { get; set; }
+        public int Id_County { get; set; }
+        public string Address { get; set; }
     }
 }

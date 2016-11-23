@@ -43,7 +43,9 @@
     <Compile Include="Cache\CacheConstants.cs" />
     <Compile Include="Cache\CacheHelper.cs" />
     <Compile Include="Cache\MyCachePriority.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Managers\CategoriesManager.cs" />
+    <Compile Include="Managers\CompaniesManager.cs" />
     <Compile Include="Managers\LocationManager.cs" />
     <Compile Include="Managers\OffersManager.cs" />
     <Compile Include="Managers\OrderManager.cs" />

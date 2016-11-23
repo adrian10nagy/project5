@@ -1,0 +1,97 @@
+﻿@model Project5.WebSite.Models.SearchView
+
+@using DAL.Entities;
+
+@{
+    ViewBag.Title = "Search";
+    List<Offer> offers = Model.Offers;
+    List<ProductType> productTypes = Model.ProductTypes;
+    List<OfferType> offerTypes = Model.OfferTypes;
+    var searchCriterias = Model.SearchCriterias;
+}
+
+<div class="container">
+    <div class="women_main">
+        <!-- start sidebar -->
+        <div class="col-md-3">
+            <div class="w_sidebar">
+                @foreach (var searchCriteria in searchCriterias)
+                {
+                    <section class="sky-form">
+                        <h4>@searchCriteria.NameToDisplay</h4>
+                        <div class="row1 scroll-pane">
+                            <div class="col col-4">
+                                @if (searchCriteria.CriteriaType == CriteriaType.Checkbox)
+                                {
+                                    foreach (var scValues in searchCriteria.SearchCriteriaValues)
+                                    {
+                                        var isChecked = @scValues.DisplayOrder == 0 ? "checked" : string.Empty;
+                                        <label class="checkbox"><input type="checkbox" name="checkbox" @isChecked><i></i>@scValues.Value</label>
+                                    }
+                                }
+                                else if (searchCriteria.CriteriaType == CriteriaType.RadioBox)
+                                {
+                                    foreach (var scValues in searchCriteria.SearchCriteriaValues)
+                                    {
+                                        var isChecked = @scValues.DisplayOrder == 0 ? "checked" : string.Empty;
+                                        <label class="radio"><input type="radio" name="radiobox" ischecked><i></i>@scValues.Value</label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+                }
+
+            </div>
+        </div>
+        <!-- start content -->
+        <div class="col-md-9 w_content">
+            <div>
+                <div>
+                    <span>@offers.Count() oferte</span> @if (@Model.SearchedKey != null && @Model.SearchedKey != "")
+                    {  <span>pentru: "</span><b>@Model.SearchedKey</b> <span>"</span>}
+                </div>
+                <span>Ordonează după   </span>
+                <div class="btn-group">
+                    <select id="sort" name="sort" class="form-control">
+                        <option value="relevance" selected="selected" onclick="searchSortBy(this);">Relevanță</option>
+                        <option value="date-asc" onclick="searchSortBy(this);">Cele mai noi</option>
+                        <option value="date-asc" onclick="searchSortBy(this);">Preț Crescător</option>
+                        <option value="date-desc" onclick="searchSortBy(this);">Preț Descrescător</option>
+                        <option value="price-asc" onclick="searchSortBy(this);">Nr. review-uri</option>
+                        <option value="price-desc" onclick="searchSortBy(this);">Discount %</option>
+                    </select>
+                </div>
+            </div>
+            <!-- grids_of_4 -->
+            @foreach (var item in offers)
+            {
+                var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Images/" + @item.Id + ".png");
+
+                <div class="grid1_of_4 shop_item_box col-md-4">
+                    <a href="~/Offer/Details/@item.Id" class='default-link'>
+                        <div class="view view-fifth">
+                            @if (File.Exists(@path))
+                            {
+                                <img src=@path class="img-responsive" alt="" />
+                            }
+                            else
+                            {
+                                <img src="~/Images/noimage.png" class="img-responsive" alt="" />
+                            }
+                            <span class="searchOfferDetailsPrice">Preț: @item.Price RON</span>
+                        </div>
+                        <span>@item.Title</span>
+                    </a>
+                    <div>
+                        @*<button class="btn btn-default AddToCartBtn" onclick="AddToCart(@item.Id);">Adaugă în coș</button>*@
+                    </div>
+                </div>
+            }
+            <!-- end grids_of_4 -->
+        </div>
+        <div class="clearfix"></div>
+
+        <!-- end content -->
+    </div>
+</div>

@@ -35,6 +35,8 @@ namespace Project5.WebSite
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/style.css",
+                      "~/Content/mycustom.css",
+                      "~/Content/sdasdasmycustom.css",
                       //"~/Content/megamenu.css",
                       "~/Content/fwslider.css",
                       "~/Content/jquery-ui-1.12.1.css",

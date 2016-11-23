@@ -49,5 +49,15 @@ namespace Business.Managers
 
             return productTypes;
         }
+
+        public static void Update(Product product)
+        {
+            Kit.Instance.Products.UpdateProduct(product);
+        }
+
+        public static void Insert(Product product)
+        {
+            Kit.Instance.Products.InsertProduct(product);
+        }
     }
 }

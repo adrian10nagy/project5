@@ -240,15 +240,39 @@ input:focus {
 /*-- header --*/
 .header_bg {
     border-bottom: 1px solid rgb(236, 236, 236);
+
 }
 
 .header {
     padding: 12px 0 0;
+
+
 }
+
+/*logo*/
 
 .logo {
     float: left;
     margin-top: 10px;
+}
+
+.logo > a{
+    color: white;
+    font-weight: bold;
+}
+.logo > .logoBeta {
+    color: white;
+    font-weight: bold;
+}
+.logo > a:hover {
+    text-decoration: none;    
+}
+
+/*end logo*/
+
+#mainCategorii{
+    text-align: center;
+    margin : 10px;
 }
 
 .header_right {
@@ -1136,13 +1160,6 @@ ul.icon1 {
     margin-bottom: 1em;
 }
 
-    .view .mask, .view .content {
-        position: absolute;
-        overflow: hidden;
-        top: 188px;
-        left: 117px;
-    }
-
 .view-fifth img {
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -1151,41 +1168,10 @@ ul.icon1 {
     transition: all 0.3s ease-in-out;
 }
 
-.view-fifth .mask {
-    -webkit-transform: translateX(-300px);
-    -moz-transform: translateX(-300px);
-    -o-transform: translateX(-300px);
-    -ms-transform: translateX(-300px);
-    transform: translateX(-300px);
-    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    filter: alpha(opacity=100);
-    opacity: 1;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.view-fifth:hover .mask {
-    -webkit-transform: translateX(0px);
-    -moz-transform: translateX(0px);
-    -o-transform: translateX(0px);
-    -ms-transform: translateX(0px);
-    transform: translateX(0px);
-}
-
 .view1 {
     overflow: hidden;
     position: relative;
 }
-
-    .view1 .mask1, .view1 .content {
-        position: absolute;
-        overflow: hidden;
-        top: 130px;
-        left: 90px;
-    }
 
 .info {
     display: block;
@@ -1193,38 +1179,6 @@ ul.icon1 {
     text-indent: -9999px;
     width: 75px;
     height: 75px;
-}
-
-.view-fifth1 img {
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.view-fifth1 .mask1 {
-    -webkit-transform: translateX(-300px);
-    -moz-transform: translateX(-300px);
-    -o-transform: translateX(-300px);
-    -ms-transform: translateX(-300px);
-    transform: translateX(-300px);
-    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    filter: alpha(opacity=100);
-    opacity: 1;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-.view-fifth1:hover .mask1 {
-    -webkit-transform: translateX(0px);
-    -moz-transform: translateX(0px);
-    -o-transform: translateX(0px);
-    -ms-transform: translateX(0px);
-    transform: translateX(0px);
 }
 
 /*--single--*/
@@ -2019,10 +1973,6 @@ ul.s_icons {
         padding: 7px 10px;
     }
 
-    .view .mask, .view .content {
-        top: 138px;
-        left: 82px;
-    }
 }
 
 @media (max-width:800px) {
@@ -2053,11 +2003,6 @@ ul.s_icons {
 
     .w_sidebar {
         margin-bottom: 3em;
-    }
-
-    .view .mask, .view .content {
-        top: 141px;
-        left: 85px;
     }
 
     .shoping_left h4 a {
@@ -2115,11 +2060,6 @@ ul.s_icons {
         width: 44.33333%;
     }
 
-    .view .mask, .view .content {
-        top: 210px;
-        left: 135px;
-    }
-
     .span_3_of_2 {
         width: 44.3333%;
     }
@@ -2163,11 +2103,6 @@ ul.s_icons {
     .span1_of_4 {
         width: 46.33333%;
         margin-left: 0;
-    }
-
-    .view .mask, .view .content {
-        top: 166px;
-        left: 102px;
     }
 
     .span_3_of_2 {
@@ -2421,6 +2356,7 @@ ul.s_icons {
 
 .shop_item_box {
     position: relative;
+    margin-top:15px;
 }
 
 .default-link {
@@ -2434,7 +2370,9 @@ ul.s_icons {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
 }
-
+.default-link:hover{
+    text-decoration: none;
+}
 .shop_item_box:hover {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.23);
     -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19),0 6px 6px rgba(0,0,0,0.23);

@@ -40,5 +40,10 @@ namespace DAL.SDK
         {
             return _repository.GetOffersByProductType(productType);
         }
+
+        public void Update(Offer offer)
+        {
+            _repository.UpdateOffer(offer);
+        }
     }
 }

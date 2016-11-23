@@ -68,7 +68,7 @@
             {
                 var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/Images/" + @item.Id + ".png");
 
-                <div class="grid1_of_4 shop_item_box">
+                <div class="grid1_of_4 shop_item_box col-md-4">
                     <a href="Details/@item.Id" class='default-link'>
                         <div class="view view-fifth">
                             @if (File.Exists(@path))
@@ -79,9 +79,6 @@
                             {
                                 <img src="~/Images/noimage.png" class="img-responsive" alt="" />
                             }
-                            <div class="mask">
-                                <div class="info">@item.Title</div>
-                            </div>
                             <span class="searchOfferDetailsPrice">Preț: @item.Price RON</span>
                         </div>
                         <h4>@Html.ActionLink(@item.Title, "Details", new { id = @item.Id })</h4>

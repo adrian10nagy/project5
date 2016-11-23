@@ -123,6 +123,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,6 +158,12 @@
     <Content Include="Content\Images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jquery-ui-1.12.1.css" />
     <Content Include="Content\megamenu.css" />
+    <Content Include="Content\mycustom.css">
+      <DependentUpon>mycustom.less</DependentUpon>
+    </Content>
+    <Content Include="Content\mycustom.min.css">
+      <DependentUpon>mycustom.css</DependentUpon>
+    </Content>
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -208,6 +215,10 @@
     <Content Include="Images\w9.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\mycustom.less" />
+    <Content Include="Content\mycustom.css.map">
+      <DependentUpon>mycustom.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Project5.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -250,10 +261,12 @@
     <Content Include="Views\Offer\Search.cshtml" />
     <Content Include="Views\Shared\_Account.cshtml" />
     <Content Include="Views\Shared\_MainSearch.cshtml" />
-    <Content Include="Views\Offer\Isdex.cshtml" />
     <Content Include="Views\Offer\Details.cshtml" />
     <Content Include="Views\Shared\_AddToCart.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Search\Offer.cshtml" />
+    <Content Include="Views\Search\Category.cshtml" />
+    <Content Include="Views\Offer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
