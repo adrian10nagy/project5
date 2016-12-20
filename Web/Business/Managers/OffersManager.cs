@@ -38,6 +38,18 @@ namespace Business.Managers
             return Kit.Instance.Offers.GetOffersByProductType(productType);
         }
 
+        public static List<Offer> GetByCategoryId(int categoryId)
+        {
+            var offers = new List<Offer>();
+            var productTypes = Kit.Instance.Products.GetProductTypesByCategoryId(categoryId);
+            foreach (var type in productTypes)
+            {
+                offers.AddRange(OffersManager.GetByProductType(type.Id));
+            }
+
+            return Kit.Instance.Offers.GetOffersByProductType(categoryId);
+        }
+
         public static Offer GetById(int id)
         {
             return Kit.Instance.Offers.GetOfferById(id);
@@ -55,6 +67,16 @@ namespace Business.Managers
             }
 
             return offerTypes;
+        }
+
+        public static void Update(Offer offer)
+        {
+            Kit.Instance.Offers.Update(offer);
+        }
+
+        public static void Inset(Offer offer)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

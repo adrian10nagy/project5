@@ -80,7 +80,6 @@ namespace DAL.Settings
         public void Execute(string query, ParameterType[] parameters, ReadRow rowMethod)
         {
             Execute(ConnectionStringSet, System.Data.CommandType.StoredProcedure, query, parameters, rowMethod);
-            //writeLog(query, parameters);
         }
 
         public void Execute(string connectionString, System.Data.CommandType commandType, string query, ParameterType[] parameters, ReadRow rowMethod)
@@ -107,13 +106,7 @@ namespace DAL.Settings
 
         public int ExecuteNonQuery(string query, ParameterType[] parameters)
         {
-            //writeLog(query, parameters);
             return ExecuteNonQuery(ConnectionStringSet, System.Data.CommandType.StoredProcedure, query, parameters);
-        }
-
-        public int ExecuteNonQueryLog(string query, ParameterType[] parameters)
-        {
-            return ExecuteNonQuery(ConnectionStringSetLog, System.Data.CommandType.StoredProcedure, query, parameters);
         }
 
         public int ExecuteNonQuery(string connectionString, System.Data.CommandType commandType, string query, ParameterType[] parameters)

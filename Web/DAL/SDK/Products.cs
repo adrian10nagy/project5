@@ -1,14 +1,10 @@
-﻿using DAL.Entities;
-using DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL.SDK
+﻿namespace DAL.SDK
 {
-   public class Products
+    using DAL.Entities;
+    using DAL.Repositories;
+    using System.Collections.Generic;
+
+    public class Products
     {
         private static IProductRepository _repository;
 
@@ -23,7 +19,7 @@ namespace DAL.SDK
         {
             return _repository.GetProductById(id);
         }
-       
+
         public List<Product> GetProductsAll()
         {
             return _repository.GetProductsAll();
@@ -34,6 +30,21 @@ namespace DAL.SDK
             return _repository.GetProductTypesAll();
         }
 
+        public List<ProductType> GetProductTypesByCategoryId(int id)
+        {
+            return _repository.GetProductTypesByCategoryId(id);
+        }
+
         #endregion
+
+        public void UpdateProduct(Product product)
+        {
+            _repository.UpdateProduct(product);
+        }
+
+        public void InsertProduct(Product product)
+        {
+            _repository.InsertProduct(product);
+        }
     }
 }

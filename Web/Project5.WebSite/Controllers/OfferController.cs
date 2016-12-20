@@ -34,6 +34,20 @@ namespace Project5.WebSite.Controllers
             return View(searchView);
         }
 
+        [HttpGet]
+        public ActionResult Category(int categoryId)
+        {
+            var searchView = new SearchView()
+            {
+                SearchCriterias = SearchCriteriasManager.GetAll(),
+                ProductTypes = ProductsManager.GetProductTypesByCategoryId(categoryId),
+                OfferTypes = OffersManager.GetOfferTypesAll(),
+                Offers = SearchManager.GetSuggestionsByCategoryId(categoryId)
+            };
+
+            return View(searchView);
+        }
+
         // GET: Offer
         public ActionResult Details(int id = 0)
         {
