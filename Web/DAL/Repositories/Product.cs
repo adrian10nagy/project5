@@ -11,6 +11,8 @@
         List<Product> GetProductsAll();
         List<ProductType> GetProductTypesAll();
         List<ProductType> GetProductTypesByCategoryId(int id);
+        void UpdateProduct(Product product);
+        void InsertProduct(Product product);
     }
 
     public partial class Repository : IProductRepository
@@ -124,5 +126,31 @@
 
         #endregion
 
+        public void UpdateProduct(Product product)
+        {
+            _dbRead.ExecuteNonQuery(
+                "ProductUpdate",
+            new[] 
+            { 
+                new SqlParameter("@Id", product.Id), 
+                new SqlParameter("@name", product.Name), 
+                new SqlParameter("@productTypeId", (int)product.ProductType.Id), 
+            });
+
+            MyCache.Instance.RemoveMyCachedItem(CacheConstants.CacheProductsAll);
+        }
+
+        public void InsertProduct(Product product)
+        {
+            _dbRead.ExecuteNonQuery(
+              "ProductInsert",
+          new[]
+            {
+                new SqlParameter("@name", product.Name),
+                new SqlParameter("@productTypeId", product.ProductType.Id)
+            });
+
+            MyCache.Instance.RemoveMyCachedItem(CacheConstants.CacheProductsAll);
+        }
     }
 }

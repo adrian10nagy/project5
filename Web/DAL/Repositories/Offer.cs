@@ -11,6 +11,7 @@ namespace DAL.Repositories
         List<Offer> GetOffersAll();
         List<OfferType> GetOfferTypesAll();
         List<Offer> GetOffersByProductType(int productType);
+        void UpdateOffer(Offer offer);
     }
 
     public partial class Repository : IOfferRepository
@@ -90,7 +91,7 @@ namespace DAL.Repositories
                 "OffersGetByProductType",
                 new[] { 
                     new SqlParameter("@Id_productType", productTypeId), 
-                },            
+                },
                 r => offers.Add(new Offer()
                 {
                     Id = Read<int>(r, "Id"),
@@ -103,11 +104,27 @@ namespace DAL.Repositories
                     {
                         Id = Read<int>(r, "Id_Prd")
                     }
-                 }
+                }
                 ));
 
             return offers;
         }
         #endregion
+
+        public void UpdateOffer(Offer offer)
+        {
+            _dbRead.ExecuteNonQuery(
+                "OfferUpdate",
+                new[] 
+                { 
+                    new SqlParameter("@Id", offer.Id), 
+                    new SqlParameter("@Title", offer.Title), 
+                    new SqlParameter("@Description",offer.Description), 
+                    new SqlParameter("@TypeId", (int)offer.OfferType), 
+                    new SqlParameter("@CompanyId", offer.Company.Id), 
+                    new SqlParameter("@Price", offer.Price), 
+                    new SqlParameter("@ProductId", offer.Product.Id), 
+            });
+        }
     }
 }

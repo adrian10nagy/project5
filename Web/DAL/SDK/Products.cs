@@ -1,13 +1,9 @@
-﻿using DAL.Entities;
-using DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL.SDK
+﻿namespace DAL.SDK
 {
+    using DAL.Entities;
+    using DAL.Repositories;
+    using System.Collections.Generic;
+
     public class Products
     {
         private static IProductRepository _repository;
@@ -40,5 +36,15 @@ namespace DAL.SDK
         }
 
         #endregion
+
+        public void UpdateProduct(Product product)
+        {
+            _repository.UpdateProduct(product);
+        }
+
+        public void InsertProduct(Product product)
+        {
+            _repository.InsertProduct(product);
+        }
     }
 }

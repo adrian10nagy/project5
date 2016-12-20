@@ -68,5 +68,15 @@ namespace Business.Managers
 
             return offerTypes;
         }
+
+        public static void Update(Offer offer)
+        {
+            Kit.Instance.Offers.Update(offer);
+        }
+
+        public static void Inset(Offer offer)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -12,9 +12,10 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="top_left">
-                <div class="logo">
-                    @Html.ActionLink(" + Piata MB", "Index", "Home")
-                </div>
+                <span class="logo">
+                    @Html.ActionLink("Mica publicitate", "Index", "Home")
+                    <sup class="logoBeta">BETA</sup>
+                </span>
             </div>
             <div class="top_right">
                 <ul class="nav navbar-nav navbar-right">
@@ -112,6 +113,7 @@
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/menu")
+    @Scripts.Render("~/bundles/googlemaps")
     @RenderSection("scripts", required: false)
     <!--webfont-->
 

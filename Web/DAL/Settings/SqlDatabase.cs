@@ -109,11 +109,6 @@ namespace DAL.Settings
             return ExecuteNonQuery(ConnectionStringSet, System.Data.CommandType.StoredProcedure, query, parameters);
         }
 
-        public int ExecuteNonQueryLog(string query, ParameterType[] parameters)
-        {
-            return ExecuteNonQuery(ConnectionStringSetLog, System.Data.CommandType.StoredProcedure, query, parameters);
-        }
-
         public int ExecuteNonQuery(string connectionString, System.Data.CommandType commandType, string query, ParameterType[] parameters)
         {
             var rowsAffected = 0;
