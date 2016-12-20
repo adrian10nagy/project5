@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace DAL.Repositories
 {
@@ -35,7 +36,8 @@ namespace DAL.Repositories
                     Id_County = Read<int>(r, "Id_cnt"),
                     Email = Read<string>(r, "Email"),
                     Phone = Read<string>(r, "Phone"),
-                    Address = Read<string>(r, "Address")
+                    Address = Read<string>(r, "Address"),
+                    AddressXml = Read<XmlDocument>(r, "AddressXML")
                 }));
 
             return companies;
@@ -75,7 +77,8 @@ namespace DAL.Repositories
                 new SqlParameter("@email", company.Email),
                 new SqlParameter("@joinDate", company.JoinDate),
                 new SqlParameter("@Id_County", company.Id_County),
-                new SqlParameter("@Address", company.Address)
+                new SqlParameter("@Address", company.Address),
+                new SqlParameter("@AddressXML", company.AddressXml)
             });
         }
 

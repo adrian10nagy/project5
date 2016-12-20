@@ -29,12 +29,12 @@ namespace Admin.Products
             GridViewRow gvRow = (GridViewRow)grdProducts.Rows[e.RowIndex];
             HiddenField cId = (HiddenField)gvRow.FindControl("Id");
             TextBox cName = (TextBox)gvRow.Cells[3].Controls[0];
-            TextBox cEmail = (TextBox)gvRow.Cells[5].Controls[0];
+            TextBox productTypeId = (TextBox)gvRow.Cells[4].Controls[0];
 
             var product = new Product
             {
                 Id = cId.Value.ToInt(),
-                ProductType = new ProductType { Id = cEmail.Text.ToInt() },
+                ProductType = new ProductType { Id = productTypeId.Text.ToInt() },
                 Name = cName.Text,
             };
 

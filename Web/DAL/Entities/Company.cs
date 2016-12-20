@@ -2,6 +2,7 @@
 namespace DAL.Entities
 {
     using System;
+    using System.Xml;
 
     public class Company
     {
@@ -12,5 +13,6 @@ namespace DAL.Entities
         public string Phone { get; set; }
         public int Id_County { get; set; }
         public string Address { get; set; }
+        public XmlDocument AddressXml { get; set; }
     }
 }

@@ -32,6 +32,9 @@ namespace Project5.WebSite
                       "~/Scripts/fwslider.js",
                       "~/Scripts/menu_jquery.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/googlemaps").Include(
+                      "~/Scripts/_googlemaps.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/style.css",
@@ -41,6 +44,8 @@ namespace Project5.WebSite
                       "~/Content/fwslider.css",
                       "~/Content/jquery-ui-1.12.1.css",
                       "~/Content/site.css"));
+
+            
         }
     }
 }

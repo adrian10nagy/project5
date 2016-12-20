@@ -120,6 +120,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OfferController.cs" />
     <Compile Include="Controllers\ResourceController.cs" />
@@ -142,9 +143,7 @@
     <Content Include="Content\fwslider.css" />
     <Content Include="Content\Images\Categories\category1.jpg" />
     <Content Include="Content\Images\Categories\category2.jpg" />
-    <Content Include="Content\Images\Categories\category21.jpg" />
     <Content Include="Content\Images\Categories\category3.jpg" />
-    <Content Include="Content\Images\Categories\category31.jpg" />
     <Content Include="Content\Images\Categories\category7.jpg" />
     <Content Include="Content\Images\Categories\category8.jpg" />
     <Content Include="Content\Images\Categories\category9.jpg" />
@@ -220,6 +219,7 @@
       <DependentUpon>mycustom.css</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Project5.pubxml" />
+    <None Include="Properties\PublishProfiles\ReleaseServer.pubxml" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fwslider.js" />
@@ -239,6 +239,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_googlemaps.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -267,6 +268,7 @@
     <Content Include="Views\Search\Offer.cshtml" />
     <Content Include="Views\Search\Category.cshtml" />
     <Content Include="Views\Offer\Index.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

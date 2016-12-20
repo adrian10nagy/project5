@@ -20,5 +20,6 @@ BEGIN
       ,[Phone]
       ,[Id_cnt]
       ,[Address]
+      ,[AddressXML]
   FROM [dbo].[Companies]
 END	

@@ -1,8 +1,10 @@
 ﻿namespace Business.Managers
 {
+    using Business.Models;
     using DAL.Entities;
     using DAL.SDK;
     using System.Collections.Generic;
+    using System.Xml;
 
     public static class CompaniesManager
     {
@@ -24,6 +26,15 @@
         public static void Update(Company company)
         {
             Kit.Instance.Companies.UpdateCompany(company);
+        }
+
+        public static LatLng GetLatLng(XmlDocument xmlDocument)
+        {
+            var latlng = new LatLng();
+
+            throw new System.NotImplementedException();
+
+            return latlng;
         }
     }
 }

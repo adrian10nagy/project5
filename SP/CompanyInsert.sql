@@ -21,7 +21,8 @@ CREATE PROCEDURE [dbo].[CompanyInsert]
 	@email nvarchar(100),
 	@address nvarchar(100),
 	@joinDate datetime,
-	@Id_County int
+	@Id_County int,
+	@Addressxml xml
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -33,14 +34,15 @@ BEGIN
       ,[Email]
       ,[Phone]
       ,[Id_cnt]
-	  ,[Address])
+	  ,[Address]
+	  ,[AddressXML])
 	values(
 		@name,
 		@joinDate,
 		@email,
 		@phone,
 		@Id_County,
-		@address)
-
+		@address,
+		@Addressxml)
 	end
 END

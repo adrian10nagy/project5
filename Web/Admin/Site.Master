@@ -60,7 +60,9 @@
                     <% } %>
                     <nav>
                         <ul id="menu">
-                            <li><a runat="server" href="~/Companies/Manage">Companies</a></li>
+                            <li><a runat="server" href="~/Companies/ManageCompanies.aspx">Companies</a></li>
+                            <li><a runat="server" href="~/Products/ManageProducts.aspx">Products</a></li>
+                            <li><a runat="server" href="~/Offers/ManageOffers.aspx">Offers</a></li>
                             <li><a runat="server" href="~/About">About</a></li>
                             <li><a runat="server" href="~/Contact">Contact</a></li>
                         </ul>

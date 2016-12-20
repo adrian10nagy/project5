@@ -53,6 +53,7 @@
     <Compile Include="Managers\SearchCriteriasManager.cs" />
     <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="Managers\UsersManager.cs" />
+    <Compile Include="Models\MapMark.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
