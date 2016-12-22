@@ -212,6 +212,7 @@
     <Content Include="Offers\AddEditOffer.aspx" />
     <Content Include="Offers\ManageOffers.aspx" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\ReleaseServer.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Products\ManageProducts.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
