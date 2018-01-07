@@ -21,5 +21,6 @@ BEGIN
       ,[Id_cnt]
       ,[Address]
       ,[AddressXML]
+	  ,[AddressJSON]
   FROM [dbo].[Companies]
 END	

@@ -19,51 +19,21 @@ namespace Project5.WebSite.Controllers
 
         public JsonResult GetCompaniesPosition()
         {
-            var result = new List<MapMark>()
-           {//45.95, lng: 24.95
-             new MapMark
-             { 
-                LatLng = new LatLng
-                {  
-                    lat = 45.95, 
-                    lng= 24.925 
-                }
-             },
-             new MapMark
-             { 
-                 LatLng = new LatLng
-                 {
-                     lat = 45.195, 
-                     lng= 24.955 
-                 }
-             },
-             new MapMark
-             { 
-                 LatLng = new LatLng
-                 {
-                     lat = 45.95, 
-                     lng= 24.95 
-                 }
-             },
-             new MapMark
-             { 
-                 LatLng = new LatLng
-                 {
-                     lat = 45.1195, 
-                     lng= 24.9355 
-                 }
-             },
-           };
+            var result = new List<MapMark>();
             
             var companies = CompaniesManager.GetAll();
             foreach (var item in companies)
 	        {
 		        var mapMark = new MapMark
                 {
-                    LatLng = CompaniesManager.GetLatLng(item.AddressXml),
+                    LatLng = CompaniesManager.GetLatLng(item.AddressJSON),
                     Title = item.Name
                 };
-                result.Add(mapMark);
+
+                if (mapMark.LatLng != null)
+                {
+                    result.Add(mapMark);
+                }
 	        }
 
             return Json(result, JsonRequestBehavior.AllowGet);

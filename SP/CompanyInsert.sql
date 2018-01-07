@@ -22,7 +22,7 @@ CREATE PROCEDURE [dbo].[CompanyInsert]
 	@address nvarchar(100),
 	@joinDate datetime,
 	@Id_County int,
-	@Addressxml xml
+	@AddressXML nvarchar(MAX) = null
 AS
 BEGIN
 	SET NOCOUNT ON;

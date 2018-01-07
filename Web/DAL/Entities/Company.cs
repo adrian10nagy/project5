@@ -13,6 +13,7 @@ namespace DAL.Entities
         public string Phone { get; set; }
         public int Id_County { get; set; }
         public string Address { get; set; }
-        public XmlDocument AddressXml { get; set; }
+        public string AddressXml { get; set; }
+        public string AddressJSON { get; set; }
     }
 }

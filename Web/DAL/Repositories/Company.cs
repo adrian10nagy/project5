@@ -37,7 +37,8 @@ namespace DAL.Repositories
                     Email = Read<string>(r, "Email"),
                     Phone = Read<string>(r, "Phone"),
                     Address = Read<string>(r, "Address"),
-                    AddressXml = Read<XmlDocument>(r, "AddressXML")
+                    AddressXml = Read<string>(r, "AddressXML"),
+                    AddressJSON = Read<string>(r, "AddressJSON")
                 }));
 
             return companies;
